@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -19,10 +22,6 @@ jobs:
         cache: maven
         server-id: github
         settings-path: ${{ github.workspace }}
-
-    - name: Get version
-      id: vars
-      run: echo $(cat $GITHUB_WORKSPACE/settings.xml)
 
     - name: Build
       run: mvn -B package --file pom.xml
