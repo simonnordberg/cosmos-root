@@ -16,8 +16,8 @@
 
   <distributionManagement>
     <repository>
-      <id>hackerman</id>
-      <url>https://hackerman-485304306779.d.codeartifact.eu-west-1.amazonaws.com/maven/cosmos/</url>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/simonnordberg/cosmos-root</url>
     </repository>
   </distributionManagement>
 
