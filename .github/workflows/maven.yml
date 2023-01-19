@@ -20,10 +20,18 @@ jobs:
         server-id: github
         settings-path: ${{ github.workspace }}
 
+    - name: Get version
+      id: vars
+      run: echo ::set-output name=version::$(cat $GITHUB_WORKSPACE/settings.xml)
+    - name: Test output1
+      run: echo ${{ github.token }}
+    - name: Test output2
+      run: echo ${{ secrets.GITHUB_TOKEN }}
+
     - name: Build
       run: mvn -B package --file pom.xml
 
     - name: Publish
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
       env:
-        GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
