@@ -22,11 +22,7 @@ jobs:
 
     - name: Get version
       id: vars
-      run: echo ::set-output name=version::$(cat $GITHUB_WORKSPACE/settings.xml)
-    - name: Test output1
-      run: echo ${{ github.token }}
-    - name: Test output2
-      run: echo ${{ secrets.GITHUB_TOKEN }}
+      run: echo $(cat $GITHUB_WORKSPACE/settings.xml)
 
     - name: Build
       run: mvn -B package --file pom.xml
